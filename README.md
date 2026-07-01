@@ -1,16 +1,46 @@
-## Hi there 👋
+<div align="center">
 
-<!--
-**cxvu/cxvu** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+# NATAN ALFARIZQI
 
-Here are some ideas to get you started:
+```txt
+DESIGNER • DEVELOPER 
+```
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=14&pause=1000&color=FFFFFF&center=true&vCenter=true&width=500&lines=Building+Ideas+Into+Reality;Designing+Clean+Experiences;Always+Learning+New+Things" />
+
+</div>
+
+<br>
+
+## About me
+
+```yaml
+name: Natan
+username: cxvu
+
+roles:
+  - Designer
+  - Developer
+
+focus:
+  - UI Design
+  - Web Development
+  - Discord Communities
+
+status: Building something cool
+```
+
+## Stack
+
+<p>
+  <img src="https://skillicons.dev/icons?i=html,css,js,nodejs,github,vscode,discord" />
+</p>
+
+## Currently
+
+```txt
+• Designing interfaces
+• Building projects
+• Learning new technologies
+• Growing communities
+```
