@@ -5,7 +5,7 @@ const CONFIG = {
   social: {
     github: 'https://github.com/cxvu',
     twitter: 'https://x.com/natnnnn_',
-    discord: 'https://discord.gg/bWU89tdKdm',
+    discord: 'https://discord.gg/RSA9EuhS79',
     instagram: 'https://instagram.com/natanzqi',
     youtube: 'https://youtube.com/@itsnatann',
   },
