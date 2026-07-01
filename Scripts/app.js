@@ -35,8 +35,6 @@ const VOL = {
 
 let clickSound = null;
 let isDucking = false;
-let avatarLoaded = false;
-let currentAvatarHash = null;
 
 function initSound() {
   try {
@@ -95,39 +93,9 @@ function renderSocialLinks() {
 }
 
 function setAvatar(userId, avatarHash) {
-  if (avatarHash && currentAvatarHash === avatarHash && avatarLoaded) {
-    return;
-  }
-
-  if (!avatarLoaded) {
-    avatar.src = 'Media/logo.png';
-    avatar.alt = 'Loading...';
-  }
-
   if (userId && avatarHash) {
-    var img = new Image();
-    img.onload = function() {
-      if (!avatarLoaded) {
-        avatar.style.transition = 'opacity 0.3s ease';
-        avatar.style.opacity = '0';
-        setTimeout(function() {
-          avatar.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
-          avatar.alt = 'Discord avatar';
-          avatar.style.opacity = '1';
-          avatarLoaded = true;
-          currentAvatarHash = avatarHash;
-        }, 300);
-      } else {
-        avatar.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
-        avatar.alt = 'Discord avatar';
-        currentAvatarHash = avatarHash;
-      }
-    };
-    img.onerror = function() {
-      avatar.src = 'Media/logo.png';
-      avatar.alt = 'Default avatar';
-    };
-    img.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
+    avatar.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
+    avatar.alt = 'Discord avatar';
   } else {
     avatar.src = 'Media/logo.png';
     avatar.alt = 'Default avatar';
@@ -230,12 +198,53 @@ function setProgress(e) {
   var rect = progressBar.getBoundingClientRect();
   var x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
   audio.currentTime = x * audio.duration;
+  updateProgress();
 }
+
+progressBar.addEventListener('click', setProgress);
+progressBar.addEventListener('mousedown', function(e) {
+  var rect = progressBar.getBoundingClientRect();
+  var x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  audio.currentTime = x * audio.duration;
+  updateProgress();
+
+  function onMove(ev) {
+    var r = progressBar.getBoundingClientRect();
+    var x2 = Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width));
+    audio.currentTime = x2 * audio.duration;
+    updateProgress();
+  }
+
+  function onUp() {
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onUp);
+  }
+
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('mouseup', onUp);
+});
+
+progressBar.addEventListener('touchstart', function(e) {
+  e.preventDefault();
+  var touch = e.touches[0];
+  var rect = progressBar.getBoundingClientRect();
+  var x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+  audio.currentTime = x * audio.duration;
+  updateProgress();
+}, { passive: false });
+
+progressBar.addEventListener('touchmove', function(e) {
+  e.preventDefault();
+  var touch = e.touches[0];
+  var rect = progressBar.getBoundingClientRect();
+  var x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+  audio.currentTime = x * audio.duration;
+  updateProgress();
+}, { passive: false });
 
 btnPlay.addEventListener('click', togglePlay);
 btnNext.addEventListener('click', nextTrack);
 btnBack.addEventListener('click', prevTrack);
-progressBar.addEventListener('click', setProgress);
 audio.addEventListener('timeupdate', updateProgress);
 audio.addEventListener('ended', function() {
   nextTrack();
