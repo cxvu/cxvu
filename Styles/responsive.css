@@ -1,0 +1,93 @@
+@media (max-width: 425px) {
+  body { padding: 1rem; }
+  .container { max-width: 100%; }
+  .card { padding: 1.5rem 1.2rem; border-radius: 18px; }
+
+  .avatar-wrapper { width: 100px; height: 100px; margin-bottom: 0.5rem; }
+  .title { font-size: 1.6rem; }
+
+  .desc { gap: 0.4rem; margin-top: 0.3rem; margin-bottom: 1rem; }
+  .pill { font-size: 0.65rem; padding: 0.1rem 0.7rem; }
+
+  .social { gap: 1rem; margin-bottom: 1rem; }
+  .social a { font-size: 1.2rem; }
+
+  .music-cover { width: 40px; height: 40px; border-radius: 8px; }
+  .music-title { font-size: 0.75rem; }
+  .music-artist { font-size: 0.6rem; }
+  .music-controls { gap: 0.8rem; }
+  .music-controls button { font-size: 0.8rem; }
+  .music-controls button#btn-play { font-size: 1.1rem; width: 32px; height: 32px; }
+  .time-current,
+  .time-total { font-size: 0.5rem; min-width: 22px; }
+  .music-left { gap: 0.6rem; }
+
+  .footer { font-size: 0.6rem; margin-top: 1rem; }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+  .container { max-width: 380px; }
+  .card { padding: 1.8rem 1.5rem; }
+
+  .avatar-wrapper { width: 110px; height: 110px; }
+  .title { font-size: 1.8rem; }
+
+  .pill { font-size: 0.7rem; padding: 0.12rem 0.8rem; }
+  .desc { gap: 0.5rem; margin-top: 0.35rem; }
+
+  .social { gap: 1.1rem; }
+  .social a { font-size: 1.3rem; }
+
+  .music-cover { width: 44px; height: 44px; }
+}
+
+@media (min-width: 769px) {
+  .container { max-width: 460px; }
+  .card { padding: 2.2rem 2rem; border-radius: 28px; }
+
+  .avatar-wrapper { width: 130px; height: 130px; margin-bottom: 0.8rem; }
+  .title { font-size: 2.2rem; }
+
+  .pill { font-size: 0.75rem; padding: 0.15rem 0.9rem; }
+  .desc { gap: 0.6rem; margin-top: 0.4rem; margin-bottom: 1.5rem; }
+
+  .social { gap: 1.2rem; margin-bottom: 1.5rem; }
+  .social a { font-size: 1.45rem; }
+
+  .music-cover { width: 52px; height: 52px; border-radius: 12px; }
+  .music-title { font-size: 0.9rem; }
+  .music-artist { font-size: 0.75rem; }
+  .music-controls button { font-size: 1rem; }
+  .music-controls button#btn-play { font-size: 1.5rem; width: 44px; height: 44px; }
+  .time-current,
+  .time-total { font-size: 0.6rem; min-width: 28px; }
+  .music-left { gap: 1rem; }
+
+  .footer { font-size: 0.75rem; margin-top: 1.5rem; }
+}
+
+@media (max-height: 700px) {
+  .card { padding: 1rem; border-radius: 16px; }
+
+  .avatar-wrapper { width: 80px; height: 80px; margin-bottom: 0.4rem; }
+  .title { font-size: 1.3rem; }
+
+  .pill { font-size: 0.55rem; padding: 0.08rem 0.6rem; }
+  .desc { gap: 0.3rem; margin-top: 0.2rem; margin-bottom: 0.6rem; }
+
+  .social { gap: 0.8rem; margin-bottom: 0.6rem; }
+  .social a { font-size: 1rem; }
+
+  .music-cover { width: 32px; height: 32px; border-radius: 6px; }
+  .music-title { font-size: 0.65rem; }
+  .music-artist { font-size: 0.5rem; }
+  .music-controls { gap: 0.5rem; }
+  .music-controls button { font-size: 0.65rem; }
+  .music-controls button#btn-play { font-size: 0.9rem; width: 26px; height: 26px; }
+  .time-current,
+  .time-total { font-size: 0.45rem; min-width: 18px; }
+  .music-progress { margin-top: 0.1rem; }
+  .progress-bar { height: 2px; }
+
+  .footer { font-size: 0.5rem; margin-top: 0.6rem; }
+}
