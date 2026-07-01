@@ -134,6 +134,7 @@ var currentTrack = 0;
 var audio = new Audio(playlist[currentTrack].file);
 audio.volume = VOL.normal;
 var isPlaying = false;
+var isDragging = false;
 
 function loadTrack(index) {
   var track = playlist[index];
@@ -180,6 +181,7 @@ function prevTrack() {
 }
 
 function updateProgress() {
+  if (isDragging) return;
   if (!audio.duration) return;
   var percent = (audio.currentTime / audio.duration) * 100;
   progressFill.style.width = percent + '%';
@@ -195,23 +197,23 @@ function formatTime(seconds) {
 
 function setProgress(e) {
   var rect = progressBar.getBoundingClientRect();
-  var x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  var x = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
   audio.currentTime = x * audio.duration;
+  updateProgress();
 }
 
-progressBar.addEventListener('click', setProgress);
+// ===== FIX: PAKAI FLAG isDragging =====
 progressBar.addEventListener('mousedown', function(e) {
-  var rect = progressBar.getBoundingClientRect();
-  var x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-  audio.currentTime = x * audio.duration;
+  isDragging = true;
+  setProgress(e);
 
   function onMove(ev) {
-    var r = progressBar.getBoundingClientRect();
-    var x2 = Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width));
-    audio.currentTime = x2 * audio.duration;
+    setProgress(ev);
   }
 
   function onUp() {
+    isDragging = false;
     document.removeEventListener('mousemove', onMove);
     document.removeEventListener('mouseup', onUp);
   }
@@ -222,19 +224,18 @@ progressBar.addEventListener('mousedown', function(e) {
 
 progressBar.addEventListener('touchstart', function(e) {
   e.preventDefault();
-  var touch = e.touches[0];
-  var rect = progressBar.getBoundingClientRect();
-  var x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
-  audio.currentTime = x * audio.duration;
+  isDragging = true;
+  setProgress(e);
 }, { passive: false });
 
 progressBar.addEventListener('touchmove', function(e) {
   e.preventDefault();
-  var touch = e.touches[0];
-  var rect = progressBar.getBoundingClientRect();
-  var x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
-  audio.currentTime = x * audio.duration;
+  setProgress(e);
 }, { passive: false });
+
+progressBar.addEventListener('touchend', function() {
+  isDragging = false;
+});
 
 btnPlay.addEventListener('click', togglePlay);
 btnNext.addEventListener('click', nextTrack);
