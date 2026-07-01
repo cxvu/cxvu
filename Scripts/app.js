@@ -180,12 +180,11 @@ function prevTrack() {
 }
 
 function updateProgress() {
-  if (audio.duration) {
-    var percent = (audio.currentTime / audio.duration) * 100;
-    progressFill.style.width = percent + '%';
-    timeCurrent.textContent = formatTime(audio.currentTime);
-    timeTotal.textContent = formatTime(audio.duration);
-  }
+  if (!audio.duration) return;
+  var percent = (audio.currentTime / audio.duration) * 100;
+  progressFill.style.width = percent + '%';
+  timeCurrent.textContent = formatTime(audio.currentTime);
+  timeTotal.textContent = formatTime(audio.duration);
 }
 
 function formatTime(seconds) {
@@ -198,7 +197,6 @@ function setProgress(e) {
   var rect = progressBar.getBoundingClientRect();
   var x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
   audio.currentTime = x * audio.duration;
-  updateProgress();
 }
 
 progressBar.addEventListener('click', setProgress);
@@ -206,13 +204,11 @@ progressBar.addEventListener('mousedown', function(e) {
   var rect = progressBar.getBoundingClientRect();
   var x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
   audio.currentTime = x * audio.duration;
-  updateProgress();
 
   function onMove(ev) {
     var r = progressBar.getBoundingClientRect();
     var x2 = Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width));
     audio.currentTime = x2 * audio.duration;
-    updateProgress();
   }
 
   function onUp() {
@@ -230,7 +226,6 @@ progressBar.addEventListener('touchstart', function(e) {
   var rect = progressBar.getBoundingClientRect();
   var x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
   audio.currentTime = x * audio.duration;
-  updateProgress();
 }, { passive: false });
 
 progressBar.addEventListener('touchmove', function(e) {
@@ -239,7 +234,6 @@ progressBar.addEventListener('touchmove', function(e) {
   var rect = progressBar.getBoundingClientRect();
   var x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
   audio.currentTime = x * audio.duration;
-  updateProgress();
 }, { passive: false });
 
 btnPlay.addEventListener('click', togglePlay);
