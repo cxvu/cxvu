@@ -30,14 +30,6 @@ body {
   align-items: center;
   text-align: center;
   transition: border-color 0.3s ease;
-  opacity: 0;
-  transform: translateY(15px);
-  animation: cardFade 0.5s ease forwards;
-}
-
-@keyframes cardFade {
-  0% { opacity: 0; transform: translateY(15px); }
-  100% { opacity: 1; transform: translateY(0); }
 }
 
 .card:hover {
@@ -49,14 +41,6 @@ body {
   height: 130px;
   margin-bottom: 0.8rem;
   flex-shrink: 0;
-  opacity: 0;
-  animation: fadeIn 0.4s ease forwards;
-  animation-delay: 0.1s;
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
 }
 
 #avatar {
@@ -74,9 +58,6 @@ body {
   color: #fff;
   margin: 0;
   line-height: 1.2;
-  opacity: 0;
-  animation: fadeIn 0.4s ease forwards;
-  animation-delay: 0.15s;
 }
 
 .desc {
@@ -128,7 +109,7 @@ body {
 .social a:hover {
   color: #fff;
   transform: scale(1.08);
-  text-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+  text-shadow: 0 0 25px rgba(255,255,255,0.15);
 }
 
 .music-player {
@@ -136,6 +117,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .music-left {
@@ -150,7 +132,7 @@ body {
   border-radius: 10px;
   overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
 .music-cover img {
@@ -215,15 +197,15 @@ body {
 .music-controls button#btn-play {
   font-size: 1.4rem;
   color: #fff;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255,255,255,0.06);
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
 .music-controls button#btn-play:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255,255,255,0.12);
 }
 
 .music-progress {
@@ -232,6 +214,10 @@ body {
   gap: 0.5rem;
   width: 100%;
   margin-top: 0.2rem;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  pointer-events: none;
 }
 
 .time-current,
@@ -241,32 +227,52 @@ body {
   color: #555;
   min-width: 26px;
   font-variant-numeric: tabular-nums;
+  pointer-events: none;
 }
 
 .progress-bar {
   flex: 1;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.08);
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
-  cursor: pointer;
   position: relative;
-  transition: height 0.2s ease;
-}
-
-.progress-bar:hover {
-  height: 5px;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
 }
 
 .progress-fill {
   width: 0%;
   height: 100%;
-  background: #fff;
+  background: #FF69B4;
   border-radius: 4px;
   transition: width 0.1s linear;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -6px;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background: #FF69B4;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+}
+
+.progress-bar:hover::after {
+  opacity: 1;
 }
 
 .footer {
-  margin-top: 1.2rem;
+  margin-top: 0.5rem;
   font-size: 0.7rem;
   color: #555;
   letter-spacing: 0.03em;
