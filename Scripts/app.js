@@ -35,6 +35,8 @@ const VOL = {
 
 let clickSound = null;
 let isDucking = false;
+let avatarLoaded = false;
+let currentAvatarHash = null;
 
 function initSound() {
   try {
@@ -93,9 +95,39 @@ function renderSocialLinks() {
 }
 
 function setAvatar(userId, avatarHash) {
+  if (avatarHash && currentAvatarHash === avatarHash && avatarLoaded) {
+    return;
+  }
+
+  if (!avatarLoaded) {
+    avatar.src = 'Media/logo.png';
+    avatar.alt = 'Loading...';
+  }
+
   if (userId && avatarHash) {
-    avatar.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
-    avatar.alt = 'Discord avatar';
+    var img = new Image();
+    img.onload = function() {
+      if (!avatarLoaded) {
+        avatar.style.transition = 'opacity 0.3s ease';
+        avatar.style.opacity = '0';
+        setTimeout(function() {
+          avatar.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
+          avatar.alt = 'Discord avatar';
+          avatar.style.opacity = '1';
+          avatarLoaded = true;
+          currentAvatarHash = avatarHash;
+        }, 300);
+      } else {
+        avatar.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
+        avatar.alt = 'Discord avatar';
+        currentAvatarHash = avatarHash;
+      }
+    };
+    img.onerror = function() {
+      avatar.src = 'Media/logo.png';
+      avatar.alt = 'Default avatar';
+    };
+    img.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
   } else {
     avatar.src = 'Media/logo.png';
     avatar.alt = 'Default avatar';
@@ -134,7 +166,6 @@ var currentTrack = 0;
 var audio = new Audio(playlist[currentTrack].file);
 audio.volume = VOL.normal;
 var isPlaying = false;
-var isDragging = false;
 
 function loadTrack(index) {
   var track = playlist[index];
@@ -181,12 +212,12 @@ function prevTrack() {
 }
 
 function updateProgress() {
-  if (isDragging) return;
-  if (!audio.duration) return;
-  var percent = (audio.currentTime / audio.duration) * 100;
-  progressFill.style.width = percent + '%';
-  timeCurrent.textContent = formatTime(audio.currentTime);
-  timeTotal.textContent = formatTime(audio.duration);
+  if (audio.duration) {
+    var percent = (audio.currentTime / audio.duration) * 100;
+    progressFill.style.width = percent + '%';
+    timeCurrent.textContent = formatTime(audio.currentTime);
+    timeTotal.textContent = formatTime(audio.duration);
+  }
 }
 
 function formatTime(seconds) {
@@ -197,49 +228,14 @@ function formatTime(seconds) {
 
 function setProgress(e) {
   var rect = progressBar.getBoundingClientRect();
-  var clientX = e.touches ? e.touches[0].clientX : e.clientX;
-  var x = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+  var x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
   audio.currentTime = x * audio.duration;
-  updateProgress();
 }
-
-// ===== FIX: PAKAI FLAG isDragging =====
-progressBar.addEventListener('mousedown', function(e) {
-  isDragging = true;
-  setProgress(e);
-
-  function onMove(ev) {
-    setProgress(ev);
-  }
-
-  function onUp() {
-    isDragging = false;
-    document.removeEventListener('mousemove', onMove);
-    document.removeEventListener('mouseup', onUp);
-  }
-
-  document.addEventListener('mousemove', onMove);
-  document.addEventListener('mouseup', onUp);
-});
-
-progressBar.addEventListener('touchstart', function(e) {
-  e.preventDefault();
-  isDragging = true;
-  setProgress(e);
-}, { passive: false });
-
-progressBar.addEventListener('touchmove', function(e) {
-  e.preventDefault();
-  setProgress(e);
-}, { passive: false });
-
-progressBar.addEventListener('touchend', function() {
-  isDragging = false;
-});
 
 btnPlay.addEventListener('click', togglePlay);
 btnNext.addEventListener('click', nextTrack);
 btnBack.addEventListener('click', prevTrack);
+progressBar.addEventListener('click', setProgress);
 audio.addEventListener('timeupdate', updateProgress);
 audio.addEventListener('ended', function() {
   nextTrack();
