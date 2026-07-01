@@ -8,14 +8,14 @@
   .pill { font-size: 0.65rem; padding: 0.1rem 0.7rem; }
   .social { gap: 1rem; margin-bottom: 1rem; }
   .social a { font-size: 1.2rem; }
-  .music-controls { gap: 0.8rem; }
+  .music-left { gap: 0.5rem; }
+  .music-controls { gap: 0.5rem; }
   .music-controls button { font-size: 0.8rem; }
   .music-controls button#btn-play { font-size: 1.1rem; width: 32px; height: 32px; }
   .music-cover { width: 40px; height: 40px; border-radius: 8px; }
   .music-title { font-size: 0.75rem; }
   .music-artist { font-size: 0.6rem; }
   .time-current, .time-total { font-size: 0.5rem; min-width: 22px; }
-  .music-left { gap: 0.6rem; }
   .footer { font-size: 0.6rem; }
 }
 
@@ -28,6 +28,7 @@
   .desc { gap: 0.5rem; margin-top: 0.35rem; }
   .social { gap: 1.1rem; }
   .social a { font-size: 1.3rem; }
+  .music-left { gap: 0.6rem; }
 }
 
 @media (min-width: 769px) {
@@ -39,12 +40,12 @@
   .desc { gap: 0.6rem; margin-top: 0.4rem; margin-bottom: 1.5rem; }
   .social { gap: 1.2rem; margin-bottom: 1.5rem; }
   .social a { font-size: 1.45rem; }
+  .music-left { gap: 0.8rem; }
   .music-controls button#btn-play { font-size: 1.5rem; width: 44px; height: 44px; }
   .music-cover { width: 52px; height: 52px; border-radius: 12px; }
   .music-title { font-size: 0.9rem; }
   .music-artist { font-size: 0.75rem; }
   .time-current, .time-total { font-size: 0.6rem; min-width: 28px; }
-  .music-left { gap: 1rem; }
   .footer { font-size: 0.75rem; }
 }
 
@@ -56,8 +57,7 @@
   .desc { gap: 0.3rem; margin-top: 0.2rem; margin-bottom: 0.6rem; }
   .social { gap: 0.8rem; margin-bottom: 0.6rem; }
   .social a { font-size: 1rem; }
-  .music-controls { gap: 0.5rem; }
-  .music-controls button { font-size: 0.65rem; }
+  .music-left { gap: 0.4rem; }
   .music-controls button#btn-play { font-size: 0.9rem; width: 26px; height: 26px; }
   .music-cover { width: 32px; height: 32px; border-radius: 6px; }
   .music-title { font-size: 0.65rem; }
@@ -66,4 +66,4 @@
   .music-progress { margin-top: 0.05rem; }
   .progress-bar { height: 2px; }
   .footer { font-size: 0.5rem; }
-           }
+}
