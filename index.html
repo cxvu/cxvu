@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natan</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="Styles/main.css" />
+  <link rel="stylesheet" href="Styles/responsive.css" />
+
+  <link rel="icon" href="Media/favicon.png" type="image/png" />
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+
+      <div class="avatar-wrapper">
+        <img id="avatar" src="Media/icon.png" alt="Natan" />
+      </div>
+
+      <h1 class="title"><span id="display-name">Natan</span></h1>
+
+      <div class="desc">
+        <span class="pill">Designer</span>
+        <span class="pill">Developer</span>
+      </div>
+
+      <div class="social" id="social-links"></div>
+
+      <div class="music-player" id="music-player">
+        <div class="music-left">
+          <div class="music-cover">
+            <img id="music-cover" src="Media/cover.jpg" alt="Cover" />
+          </div>
+          <div class="music-info">
+            <span class="music-title" id="music-title">Better</span>
+            <span class="music-artist" id="music-artist">Khalid</span>
+          </div>
+        </div>
+
+        <div class="music-controls">
+          <button id="btn-back"><i class="fas fa-backward"></i></button>
+          <button id="btn-play"><i class="fas fa-play"></i></button>
+          <button id="btn-next"><i class="fas fa-forward"></i></button>
+        </div>
+
+        <div class="music-progress">
+          <span class="time-current" id="time-current">0:00</span>
+          <div class="progress-bar" id="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="time-total" id="time-total">0:00</span>
+        </div>
+      </div>
+
+      <div class="footer">
+        Crafted by <a href="https://github.com/cxvu" target="_blank">Natan</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="Scripts/app.js"></script>
+
+</body>
+</html>
