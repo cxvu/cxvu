@@ -232,19 +232,24 @@ body {
 
 .progress-bar {
   flex: 1;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.1);
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 4px;
   position: relative;
   touch-action: none;
   -webkit-touch-callout: none;
   pointer-events: none;
+  cursor: default;
+}
+
+.progress-bar:hover {
+  height: 3px;
 }
 
 .progress-fill {
   width: 0%;
   height: 100%;
-  background: #FF69B4;
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   transition: width 0.1s linear;
   pointer-events: none;
@@ -252,23 +257,7 @@ body {
 }
 
 .progress-bar::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: -6px;
-  transform: translateY(-50%);
-  width: 14px;
-  height: 14px;
-  background: #FF69B4;
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  pointer-events: none;
-  box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
-}
-
-.progress-bar:hover::after {
-  opacity: 1;
+  display: none;
 }
 
 .footer {
