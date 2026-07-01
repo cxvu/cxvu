@@ -29,7 +29,7 @@ const btnNext = document.getElementById('btn-next');
 const VOL = {
   normal: 0.7,
   ducked: 0.15,
-  click: 0.6,
+  click: 0.8,
   duckMs: 300,
 };
 
