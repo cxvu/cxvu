@@ -35,8 +35,6 @@ const VOL = {
 
 let clickSound = null;
 let isDucking = false;
-let avatarLoaded = false;
-let currentAvatarHash = null;
 
 function initSound() {
   try {
@@ -95,39 +93,9 @@ function renderSocialLinks() {
 }
 
 function setAvatar(userId, avatarHash) {
-  if (avatarHash && currentAvatarHash === avatarHash && avatarLoaded) {
-    return;
-  }
-
-  if (!avatarLoaded) {
-    avatar.src = 'Media/logo.png';
-    avatar.alt = 'Loading...';
-  }
-
   if (userId && avatarHash) {
-    var img = new Image();
-    img.onload = function() {
-      if (!avatarLoaded) {
-        avatar.style.transition = 'opacity 0.3s ease';
-        avatar.style.opacity = '0';
-        setTimeout(function() {
-          avatar.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
-          avatar.alt = 'Discord avatar';
-          avatar.style.opacity = '1';
-          avatarLoaded = true;
-          currentAvatarHash = avatarHash;
-        }, 300);
-      } else {
-        avatar.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
-        avatar.alt = 'Discord avatar';
-        currentAvatarHash = avatarHash;
-      }
-    };
-    img.onerror = function() {
-      avatar.src = 'Media/logo.png';
-      avatar.alt = 'Default avatar';
-    };
-    img.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
+    avatar.src = 'https://cdn.discordapp.com/avatars/' + userId + '/' + avatarHash + '.png?size=256';
+    avatar.alt = 'Discord avatar';
   } else {
     avatar.src = 'Media/logo.png';
     avatar.alt = 'Default avatar';
