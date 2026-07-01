@@ -8,10 +8,10 @@
   .pill { font-size: 0.65rem; padding: 0.1rem 0.7rem; }
   .social { gap: 1rem; margin-bottom: 1rem; }
   .social a { font-size: 1.2rem; }
-  .music-left { gap: 0.5rem; }
-  .music-controls { gap: 0.5rem; }
+  .music-controls { gap: 0.8rem; }
   .music-controls button { font-size: 0.8rem; }
   .music-controls button#btn-play { font-size: 1.1rem; width: 32px; height: 32px; }
+  .music-left { gap: 0.5rem; margin-top: 0.1rem; }
   .music-cover { width: 40px; height: 40px; border-radius: 8px; }
   .music-title { font-size: 0.75rem; }
   .music-artist { font-size: 0.6rem; }
@@ -28,7 +28,7 @@
   .desc { gap: 0.5rem; margin-top: 0.35rem; }
   .social { gap: 1.1rem; }
   .social a { font-size: 1.3rem; }
-  .music-left { gap: 0.6rem; }
+  .music-left { gap: 0.6rem; margin-top: 0.12rem; }
 }
 
 @media (min-width: 769px) {
@@ -40,7 +40,7 @@
   .desc { gap: 0.6rem; margin-top: 0.4rem; margin-bottom: 1.5rem; }
   .social { gap: 1.2rem; margin-bottom: 1.5rem; }
   .social a { font-size: 1.45rem; }
-  .music-left { gap: 0.8rem; }
+  .music-left { gap: 0.8rem; margin-top: 0.15rem; }
   .music-controls button#btn-play { font-size: 1.5rem; width: 44px; height: 44px; }
   .music-cover { width: 52px; height: 52px; border-radius: 12px; }
   .music-title { font-size: 0.9rem; }
@@ -57,7 +57,7 @@
   .desc { gap: 0.3rem; margin-top: 0.2rem; margin-bottom: 0.6rem; }
   .social { gap: 0.8rem; margin-bottom: 0.6rem; }
   .social a { font-size: 1rem; }
-  .music-left { gap: 0.4rem; }
+  .music-left { gap: 0.4rem; margin-top: 0.08rem; }
   .music-controls button#btn-play { font-size: 0.9rem; width: 26px; height: 26px; }
   .music-cover { width: 32px; height: 32px; border-radius: 6px; }
   .music-title { font-size: 0.65rem; }
