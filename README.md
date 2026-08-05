@@ -1,3 +1,3 @@
-<p align="center">
-  <img src="banner.jpg" alt="banner" width="100%">
-</p>
+<div align="center">
+
+<img src="./header.jpg" alt="Natan Alfarizqi" width="100%">
