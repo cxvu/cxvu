@@ -1,9 +1,12 @@
-<div align="center">
+# Natan Alfarizqi
 
-# NATAN ALFARIZQI
+*Computer Engineering Student*
 
-<p>
-<a href="https://cxvu.my.id"><img src="https://img.shields.io/badge/Website-0B0B0F?style=for-the-badge&logo=googlechrome&logoColor=FF4FA3"></a>
-<a href="https://github.com/cxvu"><img src="https://img.shields.io/badge/GitHub-0B0B0F?style=for-the-badge&logo=github&logoColor=FF4FA3"></a>
-<a href="https://discord.gg/5xtaSE5XU7"><img src="https://img.shields.io/badge/Discord-0B0B0F?style=for-the-badge&logo=discord&logoColor=FF4FA3"></a>
-</p>
+[![Discord Presence](https://lanyard.cnrad.dev/api/957037048538222642)](https://discord.com/users/957037048538222642)
+
+
+---
+
+### 📬 Let's Connect
+- 🧩 Discord: `7349.`
+- 🌐 Portofolio: _Coming Soon!_
